@@ -85,7 +85,7 @@ public class Game {
             Game newGame = new Game();
             newGame.board = game.board;
             newGame.players = game.players;
-            newGame.gameStatus = DEFAULT_STATUS;
+            newGame.status = DEFAULT_STATUS;
             return newGame;
         }
 
