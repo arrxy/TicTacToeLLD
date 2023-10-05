@@ -1,16 +1,31 @@
 package com.games.tictactoe;
 
-import com.games.tictactoe.Models.Board;
-import com.games.tictactoe.Models.Game;
+import com.games.tictactoe.Models.*;
+import com.games.tictactoe.Strategies.playing.RandomPlayingStrategy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TicTacToeTest {
+
+    private static final int BOARD_SIZE = 3;
     @Test
     public void testCreateGame() {
-//        Board board = new Board();
-//       Game game = new Game();
+        Game game = Game.builder().withSize(BOARD_SIZE)
+                .withPlayer(
+                        HumanPlayer.builder()
+                                .user(new User())
+                                .symbol(GameSymbol.X)
+                                .build()
+                )
+                .withPlayer(
+                        BotPlayer.builder().level(GameLevel.EASY)
+                                .playingStrategy(new RandomPlayingStrategy())
+                                .symbol(GameSymbol.O)
+                                .build()
+                )
+                .build();
+//        Game game = Game.buildGame().build();
     }
 
     @Test
