@@ -22,7 +22,15 @@ public class Board {
 
     private List<List<BoardCell>> initializeCells(Integer size) {
         // from size 3 => create list of 3x3
-        return Collections.nCopies(size, Collections.nCopies(size, new BoardCell()));
+        List<List<BoardCell>> board = new ArrayList<>();
+        for (int i = 0; i < size; ++i) {
+            List<BoardCell> row = new ArrayList<>();
+            for (int j = 0; j < size; ++j) {
+                row.add(new BoardCell(i, j));
+            }
+            board.add(row);
+        }
+        return board;
     }
 
     public boolean isEmpty(Integer row, Integer col) {
@@ -30,6 +38,21 @@ public class Board {
     }
 
     public void update(BoardCell move) {
-        cells.get(move.getRow()).get(move.getCol()).setSymbol(move.getSymbol());
+        BoardCell cell = cells.get(move.getRow()).get(move.getCol());
+        cell.setSymbol(move.getSymbol());
+    }
+
+    public void printBoard() {
+        for (int i = 0; i < cells.size(); ++i) {
+            for (int j = 0; j < cells.size(); ++j) {
+                GameSymbol symbol = cells.get(i).get(j).getSymbol();
+                if (symbol == null) {
+                    System.out.printf(" | - | ");
+                } else {
+                    System.out.printf(" | " + symbol + " | ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
