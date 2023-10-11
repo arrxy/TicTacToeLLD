@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
@@ -54,5 +51,13 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public List<BoardCell> fetchEmptyCell() {
+        return cells
+                .stream()
+                .flatMap(List::stream)
+                .filter(cell -> cell.getSymbol() == null)
+                .toList();
     }
 }

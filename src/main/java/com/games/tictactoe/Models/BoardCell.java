@@ -18,4 +18,9 @@ public class BoardCell {
         this.row = row;
         this.col = col;
     }
+    public BoardCell(BoardCell boardCell) {
+        this.row = boardCell.getRow();
+        this.col = boardCell.getCol();
+        this.symbol = boardCell.getSymbol();
+    }
 }
